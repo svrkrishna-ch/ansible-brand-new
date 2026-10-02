@@ -8,7 +8,7 @@
     - linux
     - ansible
     - docker
-    - Greetings
+    - git
     live: true
     tools:
       ci: jenkins
@@ -17,4 +17,4 @@
   tasks:
   - name: print course information
     ansible.builtin.debug:
-      msg: "Hello, Iam learning {{ course_name }}, duration is {{ duration }} hours. Is it live? - {{ live }}. Topics covered are {{ topics }}, tools used are {{ tools }}"
+      msg: "Hello, Iam learning {{ course_name }} course, its duration is {{ duration }} hours. Is it live? - {{ live }}. Topics covered are {{ topics }}, tools used are {{ tools }}"
