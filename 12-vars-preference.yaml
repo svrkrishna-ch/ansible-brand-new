@@ -12,6 +12,6 @@
   tasks:
   - name: print the preferred variable
     vars:
-      GREET: "PLAY"
+      GREET: "TASK"
     ansible.builtin.debug:
       msg: "Greetings from {{ GREET }}"
