@@ -10,7 +10,6 @@
     ansible.builtin.debug:
       msg: "Course is {{ COURSE }}, duration is {{ DURATION }}, trainer is {{ TRAINER }}"
 
-  tasks:
   - name: print the task variables
     vars:
       COURSE: Ansible
