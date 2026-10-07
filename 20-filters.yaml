@@ -4,4 +4,4 @@
   tasks:
   - name: handle unverified variables
     ansible.builtin.debug:
-      msg: "Hello {{ person }}"
+      msg: "Hello {{ person | default 'Kalyan' }}"
