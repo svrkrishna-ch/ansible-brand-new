@@ -7,4 +7,5 @@
     ansible.builtin.shell: ls -ltr > /tmp/outout.txt
 
   - name: execute ls command in command module
-    ansible.builtin.command: ls -ltr > /tmp/outout.txt
+    #ansible.builtin.command: ls -ltr > /tmp/outout.txt
+    ansible.builtin.command: ls -ltr
