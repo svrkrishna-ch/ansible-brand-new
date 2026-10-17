@@ -2,6 +2,7 @@
   connection: local
   hosts: local
   vars:
+    zone: svrk.fun
     subnet_id: subnet-094cc3fcccfe05ee0
     sg_id: sg-01a3e7629b59a31b6
     ami_id: ami-0220d79f3f480ecf5
@@ -29,9 +30,9 @@
     loop: "{{ instances }}"
     register: ec2_info
 
-  - name: print ec2 instances info
-    ansible.builtin.debug:
-      msg: "{{ ec2_info }}"
+  # - name: print ec2 instances info
+  #   ansible.builtin.debug:
+  #     msg: "{{ ec2_info }}"
 
   - name: print private ip addresses
     ansible.builtin.debug:
@@ -40,4 +41,14 @@
     loop_control:
       label: "{{ item.item }}"
 
-
+  - name: create r53 records for pvt ips
+    amazon.aws.route53:
+      state: present
+      zone: "{{ zone }}"
+      record: "{{ item.item }}.{{ zone }}"
+      type: A
+      ttl: 1
+      value: "{{ item.instances[0].private_ip_address }}"
+      wait: true
+      overwrite: true
+    loop: "{{ ec2_info.results }}"
