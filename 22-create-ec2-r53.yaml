@@ -27,5 +27,10 @@
       instance_type: "{{ instance_type }}"
       region: us-east-1
     loop: "{{ instances }}"
+    register: ec2_info
+
+  - name: print ec2 instances info
+    ansible.builtin.debug:
+      msg: "{{ ec2_info }}"
 
 
